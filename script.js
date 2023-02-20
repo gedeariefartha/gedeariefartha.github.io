@@ -10,3 +10,28 @@ menu.onclick = () =>{
      menu.classList.toggle('bx-x');
      navlist.classList.toggle('open');
 }
+
+//email service
+
+function sendMail(){
+     var params = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+     };
+
+     const serviceID = "service_n0njd39";
+     const templateID = "template_50wixfo"
+
+     emailjs.send(serviceID, templateID, params)
+     .then(
+          res =>{
+               document.getElementById("name").value = "";
+               document.getElementById("email").value = "";
+               document.getElementById("message").value = "";
+               console.log(res);
+               alert("youre message sent successfully")
+          }
+     )
+     .catch((err) => console.log(err));
+}
